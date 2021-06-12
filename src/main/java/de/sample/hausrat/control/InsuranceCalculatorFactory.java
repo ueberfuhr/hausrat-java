@@ -43,16 +43,6 @@ public class InsuranceCalculatorFactory {
     }
 
     /**
-     * Creates the default calculator.
-     *
-     * @return the default calculator
-     * @see #createLinearCalculator()
-     */
-    public InsuranceCalculator createDefaultCalculator() {
-        return createLinearCalculator();
-    }
-
-    /**
      * Creates the linear calculator.
      *
      * @return the linear calculator
