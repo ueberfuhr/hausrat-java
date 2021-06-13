@@ -1,5 +1,6 @@
-package de.sample.hausrat.control;
+package de.sample.hausrat.control.config;
 
+import de.sample.hausrat.control.InsuranceCalculatorFactory;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;

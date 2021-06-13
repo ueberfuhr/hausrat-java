@@ -1,7 +1,8 @@
-package de.sample.hausrat.control;
+package de.sample.hausrat.control.config;
 
 import de.sample.hausrat.ApplicationProperties;
 import de.sample.hausrat.Environment;
+import de.sample.hausrat.control.InsuranceCalculatorFactory;
 
 import javax.validation.Validation;
 import javax.validation.Validator;

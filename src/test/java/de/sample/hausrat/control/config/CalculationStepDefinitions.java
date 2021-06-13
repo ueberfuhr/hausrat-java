@@ -1,5 +1,6 @@
-package de.sample.hausrat.control;
+package de.sample.hausrat.control.config;
 
+import de.sample.hausrat.control.InsuranceCalculator;
 import de.sample.hausrat.domain.InsuranceRequest;
 import de.sample.hausrat.domain.Price;
 import de.sample.hausrat.domain.Product;
@@ -7,12 +8,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.Assertions;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
-import java.math.BigDecimal;
-import java.util.Currency;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

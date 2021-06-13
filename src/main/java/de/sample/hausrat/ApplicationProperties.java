@@ -40,17 +40,21 @@ public class ApplicationProperties implements Environment {
     @Override
     public int getProductPrice(Product product) {
         final String propertyName;
-        switch (product) {
-            case COMPACT:
-                propertyName = ApplicationProperties.PRODUCT_COMPACT_PRICE;
-                break;
-            case OPTIMAL:
-                propertyName = ApplicationProperties.PRODUCT_OPTIMAL_PRICE;
-                break;
-            default:
-                throw new IllegalArgumentException();
+        if(null == product) {
+            throw new IllegalArgumentException();
+        } else {
+            switch (product) {
+                case COMPACT:
+                    propertyName = ApplicationProperties.PRODUCT_COMPACT_PRICE;
+                    break;
+                case OPTIMAL:
+                    propertyName = ApplicationProperties.PRODUCT_OPTIMAL_PRICE;
+                    break;
+                default:
+                    throw new IllegalArgumentException();
+            }
+            return Integer.parseInt(properties.getProperty(propertyName));
         }
-        return Integer.parseInt(properties.getProperty(propertyName));
     }
 
     @Override
