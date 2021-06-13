@@ -43,3 +43,10 @@ Feature: Linear Calculation
     Given the linear calculation
     When the living area is 100 m²
     Then the validation will fail
+
+  Scenario: rounding sample
+    Given the linear calculation
+    When the living area is 33.45654 m²
+    And the product is "OPTIMAL"
+    Then the sum insured is 23419.58 "EUR"
+

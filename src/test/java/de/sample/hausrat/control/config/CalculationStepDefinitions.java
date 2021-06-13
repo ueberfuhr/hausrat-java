@@ -1,5 +1,6 @@
 package de.sample.hausrat.control.config;
 
+import de.sample.hausrat.Environment;
 import de.sample.hausrat.control.InsuranceCalculator;
 import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Price;
@@ -10,6 +11,8 @@ import io.cucumber.java.en.When;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.ConstraintViolationException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -24,7 +27,7 @@ public class CalculationStepDefinitions {
     private double livingArea;
 
     @Given("the linear calculation")
-    public void setup() throws Exception {
+    public void setup() {
         this.calculator = this.resolver.createFactory().createLinearCalculator();
     }
 
@@ -45,8 +48,11 @@ public class CalculationStepDefinitions {
     @Then("the sum insured is {float} {string}")
     public void the_sum_insured_is(double value, String currencyCode) {
         Price result = executeCalculation();
+        Environment environment = resolver.getEnvironment();
+        BigDecimal expectedValue = BigDecimal.valueOf(value)
+                .setScale(environment.getCurrencyPrecision(), RoundingMode.HALF_UP);
         assertAll(
-                () -> assertThat(result.getValue().doubleValue()).isEqualTo(value),
+                () -> assertThat(result.getValue()).isEqualTo(expectedValue),
                 () -> assertThat(result.getCurrency().getCurrencyCode()).isEqualTo(currencyCode)
         );
     }

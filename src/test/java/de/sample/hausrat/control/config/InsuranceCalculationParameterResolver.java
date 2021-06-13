@@ -10,6 +10,9 @@ public class InsuranceCalculationParameterResolver implements ParameterResolver 
 
     private final InsuranceCalculatorFactoryResolver delegate = new InsuranceCalculatorFactoryResolver();
 
+    public InsuranceCalculationParameterResolver() throws Exception {
+    }
+
     @Override
     public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         return parameterContext.getParameter().getType() == InsuranceCalculatorFactory.class;

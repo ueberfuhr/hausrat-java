@@ -3,6 +3,7 @@ package de.sample.hausrat.control;
 import de.sample.hausrat.Environment;
 import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Price;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.ConstraintViolation;
@@ -10,6 +11,8 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.Currency;
 import java.util.Set;
 
 /**
@@ -22,8 +25,14 @@ public class InsuranceCalculatorFactory {
     private final Environment environment;
     private final Validator validator;
 
+    public static void main(String[] args) {
+        System.out.println(BigDecimal.valueOf(23419.578).setScale(2, RoundingMode.HALF_UP));
+    }
+
     private Price price(BigDecimal value) {
-        return new Price(value.round(new MathContext(environment.getCurrencyPrecision())), environment.getCurrency());
+        int scale = environment.getCurrencyPrecision();
+        Currency currency = environment.getCurrency();
+        return new Price(value.setScale(scale, RoundingMode.HALF_UP), currency);
     }
 
     private Price price(double value) {
