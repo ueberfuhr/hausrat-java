@@ -2,7 +2,7 @@ package de.sample.hausrat;
 
 import de.sample.hausrat.control.InsuranceCalculator;
 import de.sample.hausrat.control.InsuranceCalculatorFactory;
-import de.sample.hausrat.domain.InsuranceRequest;
+import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Price;
 import de.sample.hausrat.domain.Product;
 
@@ -19,14 +19,14 @@ public class Start {
         Validator validator = factory.getValidator();
         final InsuranceCalculatorFactory calcFactory = new InsuranceCalculatorFactory(env, validator);
         final InsuranceCalculator calc = calcFactory.createLinearCalculator();
-        Start.outputCase(new InsuranceRequest(Product.COMPACT, 100), calc);
-        Start.outputCase(new InsuranceRequest(Product.OPTIMAL, 100), calc);
-        Start.outputCase(new InsuranceRequest(Product.COMPACT, 150), calc);
-        Start.outputCase(new InsuranceRequest(Product.OPTIMAL, 150), calc);
-        Start.outputCase(new InsuranceRequest(null, -5), calc);
+        Start.outputCase(new InsuranceCalculationRequest(Product.COMPACT, 100), calc);
+        Start.outputCase(new InsuranceCalculationRequest(Product.OPTIMAL, 100), calc);
+        Start.outputCase(new InsuranceCalculationRequest(Product.COMPACT, 150), calc);
+        Start.outputCase(new InsuranceCalculationRequest(Product.OPTIMAL, 150), calc);
+        Start.outputCase(new InsuranceCalculationRequest(null, -5), calc);
     }
 
-    private static void outputCase(InsuranceRequest req, InsuranceCalculator calculator) {
+    private static void outputCase(InsuranceCalculationRequest req, InsuranceCalculator calculator) {
         try {
             final Price price = calculator.calculate(req);
             System.out.printf("Produkt: %s, Wohnfläche: %.2fm² => %.2f %s%n", req.getProduct().name(), req.getLivingArea(), price.getValue(), price.getCurrency().getCurrencyCode());

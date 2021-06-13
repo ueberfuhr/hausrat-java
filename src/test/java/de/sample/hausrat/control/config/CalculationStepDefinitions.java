@@ -1,7 +1,7 @@
 package de.sample.hausrat.control.config;
 
 import de.sample.hausrat.control.InsuranceCalculator;
-import de.sample.hausrat.domain.InsuranceRequest;
+import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Price;
 import de.sample.hausrat.domain.Product;
 import io.cucumber.java.en.Given;
@@ -39,7 +39,7 @@ public class CalculationStepDefinitions {
     }
 
     private Price executeCalculation() {
-        return this.calculator.calculate(new InsuranceRequest(this.product, this.livingArea));
+        return this.calculator.calculate(new InsuranceCalculationRequest(this.product, this.livingArea));
     }
 
     @Then("the sum insured is {float} {string}")

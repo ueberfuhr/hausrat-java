@@ -1,9 +1,7 @@
 package de.sample.hausrat.control;
 
-import de.sample.hausrat.domain.InsuranceRequest;
+import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Price;
-
-import java.util.Currency;
 
 /**
  * Provides the calculation of the sum insured based on
@@ -19,6 +17,6 @@ public interface InsuranceCalculator {
      * @return the sum insured
      * @throws IllegalArgumentException, if the request is invalid or <tt>null</tt>
      */
-    Price calculate(InsuranceRequest request);
+    Price calculate(InsuranceCalculationRequest request);
 
 }

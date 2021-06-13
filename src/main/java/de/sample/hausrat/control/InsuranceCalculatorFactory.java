@@ -1,7 +1,7 @@
 package de.sample.hausrat.control;
 
 import de.sample.hausrat.Environment;
-import de.sample.hausrat.domain.InsuranceRequest;
+import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Price;
 import lombok.RequiredArgsConstructor;
 
@@ -33,7 +33,7 @@ public class InsuranceCalculatorFactory {
     // we need input validation using Bean Validation
     private InsuranceCalculator valid(InsuranceCalculator delegate) {
         return req -> {
-            Set<ConstraintViolation<InsuranceRequest>> violations = validator.validate(req);
+            Set<ConstraintViolation<InsuranceCalculationRequest>> violations = validator.validate(req);
             if (!violations.isEmpty()) {
                 throw new IllegalArgumentException(new ConstraintViolationException(violations));
             } else {

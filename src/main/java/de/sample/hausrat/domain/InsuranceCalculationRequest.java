@@ -11,7 +11,7 @@ import javax.validation.constraints.Positive;
  */
 @Data
 @AllArgsConstructor
-public class InsuranceRequest {
+public class InsuranceCalculationRequest {
 
     @NotNull
     private final Product product;

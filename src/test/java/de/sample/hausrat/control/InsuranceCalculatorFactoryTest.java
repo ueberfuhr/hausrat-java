@@ -1,7 +1,7 @@
 package de.sample.hausrat.control;
 
 import de.sample.hausrat.Environment;
-import de.sample.hausrat.domain.InsuranceRequest;
+import de.sample.hausrat.domain.InsuranceCalculationRequest;
 import de.sample.hausrat.domain.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.Currency;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -41,7 +40,7 @@ public class InsuranceCalculatorFactoryTest {
 
     @Test
     void testUsageOfEnvironmentAndValidation() {
-        InsuranceRequest req = new InsuranceRequest(Product.COMPACT, 140);
+        InsuranceCalculationRequest req = new InsuranceCalculationRequest(Product.COMPACT, 140);
         when(env.getProductPrice(req.getProduct())).thenReturn(100);
         when(env.getCurrencyPrecision()).thenReturn(2);
         when(env.getCurrency()).thenReturn(Currency.getInstance("EUR"));
