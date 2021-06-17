@@ -19,13 +19,13 @@ Feature: Linear Calculation
     Given the linear calculation
     When the living area is 150 m²
     And the product is "COMPACT"
-    Then the sum insured is 98000 "EUR"
+    Then the sum insured is 97500 "EUR"
 
   Scenario: sample 4
     Given the linear calculation
     When the living area is 150 m²
     And the product is "OPTIMAL"
-    Then the sum insured is 110000 "EUR"
+    Then the sum insured is 105000 "EUR"
 
   Scenario: negative living area
     Given the linear calculation
